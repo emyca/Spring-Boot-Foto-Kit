@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <div th:fragment="foto-content" class="container justify-content-center mt-3 mb-3">
+            <div class="container-sm">
+                <!-- Create Modal Button -->
+                <button type="button" class="btn btn-info mb-3" data-bs-toggle="modal"
+                        data-bs-target="#fotoCreateModal">
+                    <i class="bi bi-plus-lg"></i>&nbsp;Add member
+                </button>
+                <!-- /Create Modal Button -->
+                <div><p class="font-weight-bold fs-3 text-center" th:text="${fotosInfo}"></p></div>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5">
+                    <div class="card m-1" th:each="foto:${fotos}">
+                        <div>
+                            <button name="btnDelete" type="button" class="btn btn-danger mt-1 btn-sm" style="border-radius: 50%;"
+                                    data-bs-toggle="modal" data-bs-target="#fotoDeleteModal">
+                                <span class="bi bi-trash3"></span>
+                            </button>
+                            <button name="btnUpdate" type="button" class="btn btn-warning btn-sm mt-1 ms-2" style="border-radius: 50%;"
+                                    data-bs-toggle="modal" data-bs-target="#fotoUpdateModal">
+                                <span class="bi bi-pencil"></span>
+                            </button>
+                        </div>
+                        <img id="img" th:src="@{${uploads}+${foto.img}}" class="card-img-top p-1 m-1" alt="foto-img">
+                        <div class="card-body">
+                            <p>
+                                <span name="id" class="card-text visually-hidden" th:text="${foto.id}"></span><br>
+                                <span name="name" class="card-text fw-bold" th:text="${foto.name}"></span><br>
+                                <span name="description" class="fw-lighter" th:text="${foto.description}"></span><br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div th:insert="~{foto-create-modal :: foto-create-modal}"></div>
+            <div th:insert="~{foto-update-modal :: foto-update-modal}"></div>
+            <div th:insert="~{foto-delete-modal :: foto-delete-modal}"></div>
+        </div>
+    </body>
+</html>
