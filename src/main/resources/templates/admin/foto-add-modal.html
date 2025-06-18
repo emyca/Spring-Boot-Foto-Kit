@@ -9,26 +9,26 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form id="addForm" method='post' th:action="@{/admin/add-foto}" enctype="multipart/form-data">
+                        <form id="addForm" method='post' enctype="multipart/form-data">
                             <div class="mb-2">
-                                <label for="addName" class="form-label" style="font-size: 16px;">Name</label>
-                                <input id="addName" type="text" class="form-control" placeholder="Name...">
+                                <label for="addFormName" class="form-label" style="font-size: 16px;">Name</label>
+                                <input id="addFormName" type="text" class="form-control" placeholder="Name...">
                             </div>
                             <div class="mb-2">
-                                <label for="addDescr" class="form-label" style="font-size: 12px;">Description</label>
-                                <textarea id="addDescr" class="form-control" rows="4"></textarea>
+                                <label for="addFormDescr" class="form-label" style="font-size: 12px;">Description</label>
+                                <textarea id="addFormDescr" class="form-control" rows="4"></textarea>
                             </div>
                             <div class="mb-2">
-                                <input id="addFile" class="form-control" type="file">
+                                <input id="addFormFile" class="form-control" type="file">
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <div id="addSpinner" class="spinner-border text-warning visually-hidden" role="status"></div>
+                        <div id="addFormSpinner" class="spinner-border text-warning visually-hidden" role="status"></div>
                         <button id="addFormClearBtn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Clear form</button>
                         <button id="addFormSaveBtn" type="button" class="btn btn-primary">Save</button>
                     </div>
-                    <div id='addResponse' class="m-2 p-2"></div>
+                    <div id='addFormResponse' class="m-2 p-2"></div>
                 </div>
             </div>
         </div>
