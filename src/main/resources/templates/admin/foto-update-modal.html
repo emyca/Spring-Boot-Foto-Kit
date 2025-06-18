@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <div th:fragment="foto-update-modal"
+             id="fotoUpdateModal" class="modal fade" tabindex="-1"
+             aria-labelledby="updateModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="updateModalLabel"
+                            class="modal-title fs-5 text-primary">Update Foto</h1>
+                        <button id="updateModalCloseBtn"
+                                type="button" class="btn-close"
+                                data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><span id="updateFormId" style='display:none'></span></p>
+                        <form id="updateForm" method='post'>
+                            <div class="mb-2">
+                                <label for="updateFormName"
+                                       class="form-label"
+                                       style="font-size: 12px;">Name</label>
+                                <input id="updateFormName"
+                                       type="text"
+                                       class="form-control"
+                                       placeholder="Name...">
+                            </div>
+                            <div class="mb-2">
+                                <label for="updateFormDescr"
+                                       class="form-label"
+                                       style="font-size: 12px;">Description</label>
+                                <textarea id="updateFormDescr"
+                                          class="form-control"
+                                          rows="4"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <div id="updateFormSpinner"
+                             class="spinner-border text-warning visually-hidden"
+                             role="status">
+                        </div>
+                        <button id="updateFormCancelBtn"
+                                type="button" class="btn btn-secondary"
+                                data-bs-dismiss="modal">Cancel</button>
+                        <button id="updateFormUpdateBtn"
+                                type="button"
+                                class="btn btn-warning">Update</button>
+                    </div>
+                    <div id='updateFormResponse' class="m-2 p-2"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
