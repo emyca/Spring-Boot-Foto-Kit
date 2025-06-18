@@ -3,13 +3,13 @@
     <body>
         <div th:fragment="foto-content" class="container justify-content-center mt-3 mb-3">
             <div class="container-sm">
-                <!-- Create Modal Button -->
+                <!-- Add Modal Button -->
                 <button type="button" class="btn btn-info mb-3" data-bs-toggle="modal"
-                        data-bs-target="#fotoCreateModal">
+                        data-bs-target="#fotoAddModal">
                     <i class="bi bi-plus-lg"></i>&nbsp;Add member
                 </button>
-                <!-- /Create Modal Button -->
-                <div><p class="font-weight-bold fs-3 text-center" th:text="${fotosInfo}"></p></div>
+                <!-- /Add Modal Button -->
+                <div><p class="font-weight-bold fs-3 text-center" th:text="${fotoInfo}"></p></div>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5">
                     <div class="card m-1" th:each="foto:${fotos}">
                         <div>
@@ -33,7 +33,7 @@
                     </div>
                 </div>
             </div>
-            <div th:insert="~{foto-create-modal :: foto-create-modal}"></div>
+            <div th:insert="~{foto-add-modal :: foto-add-modal}"></div>
             <div th:insert="~{foto-update-modal :: foto-update-modal}"></div>
             <div th:insert="~{foto-delete-modal :: foto-delete-modal}"></div>
         </div>
