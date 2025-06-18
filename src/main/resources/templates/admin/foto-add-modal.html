@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <div th:fragment="foto-add-modal" id="fotoAddModal" class="modal fade" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="addModalLabel" class="modal-title fs-5 text-primary">Add New Foto</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="addForm" method='post' th:action="@{/admin/add-foto}" enctype="multipart/form-data">
+                            <div class="mb-2">
+                                <label for="addName" class="form-label" style="font-size: 16px;">Name</label>
+                                <input id="addName" type="text" class="form-control" placeholder="Name...">
+                            </div>
+                            <div class="mb-2">
+                                <label for="addDescr" class="form-label" style="font-size: 12px;">Description</label>
+                                <textarea id="addDescr" class="form-control" rows="4"></textarea>
+                            </div>
+                            <div class="mb-2">
+                                <input id="addFile" class="form-control" type="file">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <div id="addSpinner" class="spinner-border text-warning visually-hidden" role="status"></div>
+                        <button id="addFormClearBtn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Clear form</button>
+                        <button id="addFormSaveBtn" type="button" class="btn btn-primary">Save</button>
+                    </div>
+                    <div id='addResponse' class="m-2 p-2"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
