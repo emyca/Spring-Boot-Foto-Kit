@@ -8,8 +8,8 @@ _INFO/
 
 src/main/resources/application.properties
 
-public/uploads/*
-!public/uploads/.readme
+uploads/*
+!uploads/.readme
 
 ### STS ###
 .apt_generated
