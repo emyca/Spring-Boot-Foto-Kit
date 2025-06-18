@@ -4,9 +4,12 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+_INFO/
+
 src/main/resources/application.properties
 
-_INFO/
+public/uploads/*
+!public/uploads/.readme
 
 ### STS ###
 .apt_generated
