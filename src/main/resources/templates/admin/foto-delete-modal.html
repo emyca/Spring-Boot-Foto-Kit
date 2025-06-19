@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <div th:fragment="foto-delete-modal"
+             id="fotoDeleteModal" class="modal fade" tabindex="-1"
+             aria-labelledby="fotoDeleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="fotoDeleteModalLabel"
+                            class="modal-title text-danger">Delete Foto</h1>
+                        <button id="deleteModalCloseBtn"
+                                type="button" class="btn-close"
+                                data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="fs-5">Are you sure you want to delete&nbsp;
+                            <span id="deleteName" class="fw-bolder"></span> ?
+                            <span id="deleteId" style='display:none'></span>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <div id="deleteSpinner"
+                             class="spinner-border text-warning visually-hidden"
+                             role="status">
+                        </div>
+                        <button id="deleteDeleteBtn" type="button"
+                                class="btn btn-danger">Delete</button>
+                        <button id="deleteCancelBtn" type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                    <div id='deleteResponse' class="m-2 p-2"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
