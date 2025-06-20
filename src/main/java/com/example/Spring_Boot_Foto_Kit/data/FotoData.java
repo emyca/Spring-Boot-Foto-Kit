@@ -4,6 +4,10 @@ import com.example.Spring_Boot_Foto_Kit.entity.Foto;
 import lombok.Getter;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.StreamSupport;
+
 // DTO that contains values of a specific item
 @Getter
 public class FotoData {
@@ -32,12 +36,27 @@ public class FotoData {
         return foto;
     }
 
+    public List<Foto> toList(Iterable<Foto> iterable) {
+        List<Foto> list =
+                StreamSupport
+                        .stream(iterable.spliterator(), false)
+                        .map(foto ->
+                                new Foto(
+                                    foto.getId(),
+                                    foto.getImg(),
+                                    foto.getName(),
+                                    foto.getDescription()))
+                        .toList();
+        return new ArrayList<>(list);
+    }
+
     @Getter
     public enum Message {
 
         SUCCESS_CREATE_MSG("Foto has been created."),
         FAILURE_CREATE_MSG("Foto has not been created."),
         FAILURE_GET_ITEM_MSG("Foto has not been found!"),
+        FAILURE_GET_LIST_MSG("Fotos have not been found!"),
         SUCCESS_UPDATE_MSG("Foto has been updated."),
         SUCCESS_DELETE_MSG("Foto has been deleted.");
 
