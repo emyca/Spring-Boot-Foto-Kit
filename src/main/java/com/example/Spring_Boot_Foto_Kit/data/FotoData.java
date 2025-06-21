@@ -12,14 +12,10 @@ import java.util.stream.StreamSupport;
 @Getter
 public class FotoData {
 
-    private Long id;
-    private MultipartFile image;
-    private String name;
-    private String description;
-    private int status;
-    private String reasonPhrase;
-    private boolean success;
-    private String message;
+    private final Long id;
+    private final MultipartFile image;
+    private final String name;
+    private final String description;
 
     public FotoData(FotoRequest request) {
         this.id = (request.id() != null) ? request.id() : null;
@@ -49,22 +45,4 @@ public class FotoData {
                         .toList();
         return new ArrayList<>(list);
     }
-
-    @Getter
-    public enum Message {
-
-        SUCCESS_CREATE_MSG("Foto has been created."),
-        FAILURE_CREATE_MSG("Foto has not been created."),
-        FAILURE_GET_ITEM_MSG("Foto has not been found!"),
-        FAILURE_GET_LIST_MSG("Fotos have not been found!"),
-        SUCCESS_UPDATE_MSG("Foto has been updated."),
-        SUCCESS_DELETE_MSG("Foto has been deleted.");
-
-        private final String message;
-
-        Message(String message) {
-            this.message = message;
-        }
-    }
-
 }
