@@ -2,6 +2,7 @@ package com.example.Spring_Boot_Foto_Kit.data;
 
 import com.example.Spring_Boot_Foto_Kit.entity.Foto;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
@@ -10,12 +11,13 @@ import java.util.stream.StreamSupport;
 
 // DTO that contains values of a specific item
 @Getter
+@NoArgsConstructor
 public class FotoData {
 
-    private final Long id;
-    private final MultipartFile image;
-    private final String name;
-    private final String description;
+    private Long id;
+    private MultipartFile image;
+    private String name;
+    private String description;
 
     public FotoData(FotoRequest request) {
         this.id = (request.id() != null) ? request.id() : null;
