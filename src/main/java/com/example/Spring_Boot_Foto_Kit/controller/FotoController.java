@@ -2,7 +2,8 @@ package com.example.Spring_Boot_Foto_Kit.controller;
 
 import com.example.Spring_Boot_Foto_Kit.data.FotoMessage;
 import com.example.Spring_Boot_Foto_Kit.entity.Foto;
-import com.example.Spring_Boot_Foto_Kit.service.user.FotoService;
+import com.example.Spring_Boot_Foto_Kit.service.user.FotoServiceImpl;
+import com.example.Spring_Boot_Foto_Kit.utils.URLS;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,9 +15,9 @@ import java.util.List;
 public class FotoController {
 
     @Autowired
-    FotoService service;
+    FotoServiceImpl service;
 
-    @GetMapping("/fotos")
+    @GetMapping("/")
     public String getAll(Model model) {
         List<Foto> list = service.getAll();
         model.addAttribute("title", "Fotos");
@@ -24,6 +25,7 @@ public class FotoController {
             model.addAttribute("fotoInfo",
                     FotoMessage.FAILURE_GET_LIST_MSG.getMessage());
         } else {
+            model.addAttribute("uploads", URLS.GET_UPLOADS_URL.getUrl());
             model.addAttribute("fotos", list);
         }
         model.addAttribute("fragmentName", "foto-content");
