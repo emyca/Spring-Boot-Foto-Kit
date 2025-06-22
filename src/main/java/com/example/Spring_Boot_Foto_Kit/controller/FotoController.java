@@ -2,7 +2,7 @@ package com.example.Spring_Boot_Foto_Kit.controller;
 
 import com.example.Spring_Boot_Foto_Kit.data.FotoMessage;
 import com.example.Spring_Boot_Foto_Kit.entity.Foto;
-import com.example.Spring_Boot_Foto_Kit.service.user.FotoServiceImpl;
+import com.example.Spring_Boot_Foto_Kit.service.user.FotoService;
 import com.example.Spring_Boot_Foto_Kit.utils.URLS;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,7 @@ import java.util.List;
 public class FotoController {
 
     @Autowired
-    FotoServiceImpl service;
+    FotoService service;
 
     @GetMapping("/")
     public String getAll(Model model) {
