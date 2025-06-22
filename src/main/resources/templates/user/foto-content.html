@@ -3,6 +3,7 @@
     <body>
         <div th:fragment="foto-content" class="container justify-content-center mt-3 mb-3">
             <div class="container-sm">
+                <div><p class="font-weight-bold fs-3 text-center" th:text="${fotoInfo}"></p></div>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5">
                     <div class="card" th:each="foto:${fotos}">
                         <img id="img" th:src="@{${uploads}+${foto.img}}" class="card-img-top p-1 m-1" alt="foto-img">
