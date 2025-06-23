@@ -5,7 +5,7 @@
             <div class="container-sm">
                 <!-- Add Modal Button -->
                 <button type="button" class="btn btn-info mb-3" data-bs-toggle="modal"
-                        data-bs-target="#fotoAddModal">
+                        data-bs-target="#addModal">
                     <i class="bi bi-plus-lg"></i>&nbsp;Add foto
                 </button>
                 <!-- /Add Modal Button -->
@@ -14,11 +14,11 @@
                     <div class="card m-1" th:each="foto:${fotos}">
                         <div>
                             <button name="btnDelete" type="button" class="btn btn-danger mt-1 btn-sm" style="border-radius: 50%;"
-                                    data-bs-toggle="modal" data-bs-target="#fotoDeleteModal">
+                                    data-bs-toggle="modal" data-bs-target="#deleteModal">
                                 <span class="bi bi-trash3"></span>
                             </button>
                             <button name="btnUpdate" type="button" class="btn btn-warning btn-sm mt-1 ms-2" style="border-radius: 50%;"
-                                    data-bs-toggle="modal" data-bs-target="#fotoUpdateModal">
+                                    data-bs-toggle="modal" data-bs-target="#updateModal">
                                 <span class="bi bi-pencil"></span>
                             </button>
                         </div>
