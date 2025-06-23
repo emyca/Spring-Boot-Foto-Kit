@@ -9,8 +9,8 @@ import java.util.List;
 
 @Service
 public interface FotoAdminService {
-    FotoResponse add(FotoRequest request);
     List<Foto> getAll();
+    FotoResponse add(FotoRequest request);
     FotoResponse update(Long id, FotoRequest request);
     FotoResponse delete(Long id);
 }
