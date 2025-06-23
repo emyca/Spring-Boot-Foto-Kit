@@ -21,7 +21,7 @@ public class FotoAdminController {
     @GetMapping("/fotos")
     public String getAll(Model model) {
         List<Foto> list = service.getAll();
-        model.addAttribute("title", "Fotos");
+        model.addAttribute("title", "Admin | Fotos");
         if (list.isEmpty()) {
             model.addAttribute("fotoInfo",
                     FotoMessage.FAILURE_GET_LIST_MSG.getMessage());
