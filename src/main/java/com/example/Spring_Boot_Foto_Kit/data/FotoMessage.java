@@ -5,6 +5,9 @@ import lombok.Getter;
 @Getter
 public enum FotoMessage {
 
+    ADD_FILE_MSG("Add image!"),
+    ADD_NAME_MSG("Add name!"),
+    ADD_DESCRIPTION_MSG("Add description!"),
     SUCCESS_CREATE_MSG("Foto has been created."),
     FAILURE_CREATE_MSG("Foto has not been created."),
     FAILURE_GET_ITEM_MSG("Foto has not been found!"),
