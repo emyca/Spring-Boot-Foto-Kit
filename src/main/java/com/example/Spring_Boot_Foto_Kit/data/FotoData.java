@@ -15,20 +15,20 @@ import java.util.stream.StreamSupport;
 public class FotoData {
 
     private Long id;
-    private MultipartFile image;
+    private MultipartFile file;
     private String name;
     private String description;
 
     public FotoData(FotoRequest request) {
         this.id = (request.id() != null) ? request.id() : null;
-        this.image = (request.image() != null) ? request.image() : null;
+        this.file = (request.file() != null) ? request.file() : null;
         this.name = (request.name() != null) ? request.name() : null;
         this.description = (request.description() != null) ? request.description() : null;
     }
 
     public Foto requestToEntity() {
         Foto foto = new Foto();
-        foto.setImg(this.getImage().getOriginalFilename());
+        foto.setImg(this.getFile().getOriginalFilename());
         foto.setName(this.getName());
         foto.setDescription(this.getDescription());
         return foto;
