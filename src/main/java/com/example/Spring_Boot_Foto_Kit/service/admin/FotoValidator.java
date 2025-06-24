@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class FotoValidator {
 
     public void validateImage(FotoData data) {
-        MultipartFile file = data.getImage();
+        MultipartFile file = data.getFile();
         if (file == null || file.isEmpty())
             throw new FotoException(
                     FotoMessage.ADD_FILE_MSG.getMessage());
