@@ -51,4 +51,14 @@ public class FotoAdminController {
                 .body(service.add(request));
     }
 
+    @PutMapping(path = "/fotos/{id}",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<FotoResponse> update(
+            @PathVariable("id") Long id,
+            @RequestBody FotoRequest request) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(service.update(id, request));
+    }
+
 }

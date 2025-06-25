@@ -19,6 +19,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FotoAdminServiceImpl implements FotoAdminService {
@@ -104,10 +105,52 @@ public class FotoAdminServiceImpl implements FotoAdminService {
         }
     }
 
-
     @Override
+    @Transactional
     public FotoResponse update(Long id, FotoRequest request) {
-        return null;
+        FotoData data = new FotoData(request);
+
+        try {
+            this.validator.validateName(data);
+        } catch (FotoException e) {
+            return new FotoResponse(
+                    HttpStatus.NO_CONTENT.value(),
+                    HttpStatus.NO_CONTENT.getReasonPhrase(),
+                    false, e.getMessage());
+        }
+
+        try {
+            this.validator.validateDescription(data);
+        } catch (FotoException e) {
+            return new FotoResponse(
+                    HttpStatus.NO_CONTENT.value(),
+                    HttpStatus.NO_CONTENT.getReasonPhrase(),
+                    false, e.getMessage());
+        }
+
+        // Gets wrapped by Optional
+        // item entity object to update
+        // from DB by id
+        Optional<Foto> optional = repository.findById(id);
+
+        if (optional.isPresent()) {
+            // Gets updated specific item object
+            Foto foto =
+                    data.updateRequestToEntity(
+                            id, request, optional.get());
+            // Saves item entity object into DB
+            repository.save(foto);
+            return new FotoResponse(
+                    HttpStatus.OK.value(),
+                    HttpStatus.OK.getReasonPhrase(),
+                    true,
+                    FotoMessage.SUCCESS_UPDATE_MSG.getMessage());
+        } else
+            return new FotoResponse(
+                    HttpStatus.NOT_FOUND.value(),
+                    HttpStatus.NOT_FOUND.getReasonPhrase(),
+                    false,
+                    FotoMessage.FAILURE_GET_ITEM_MSG.getMessage());
     }
 
     @Override
