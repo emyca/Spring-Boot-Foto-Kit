@@ -2,7 +2,6 @@ $(function() {
 
     $('#addFormSaveBtn').click(function(e) {
 		e.preventDefault();
-		$("#addFormClearBtn").prop("disabled", true);
 		$("#addFormSaveBtn").prop("disabled", true);
 		$('#addFormSpinner').show();
 
@@ -28,18 +27,16 @@ $(function() {
             }
             $('#addFormSpinner').hide();
             $('#addFormResponse').html(output);
-            $("#addFormClearBtn").prop("disabled", false);
             $("#addFormSaveBtn").prop("disabled", false);
         })
         .fail (function(e) {
             $('#addFormSpinner').hide();
             $("#addFormResponse").html(e.responseText);
-            $("#addFormClearBtn").prop("disabled", false);
             $("#addFormSaveBtn").prop("disabled", false);
         });
     });
 
-    $('#addFormClearBtn').click(function(e) {
+    $('#addModalCloseBtn').click(function(e) {
         $('#addForm')[0].reset();
         $('#addFormResponse').html('');
         location.reload();

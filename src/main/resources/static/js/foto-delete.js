@@ -48,12 +48,7 @@ $(function() {
             $('#deleteId').html('');
             $('#deleteName').html('');
             $('#deleteResponse').html('');
+            location.reload();
     });
 
-    $('#deleteModalCloseBtn').click(function(e) {
-        $('#deleteId').html('');
-        $('#deleteName').html('');
-        $('#deleteResponse').html('');
-        location.reload();
-    });
 });

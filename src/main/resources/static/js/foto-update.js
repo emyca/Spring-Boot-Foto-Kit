@@ -13,15 +13,18 @@ $(function() {
 
     $('#updateFormUpdateBtn').click(function(e) {
         e.preventDefault();
-		$("#updateFormCancelBtn").prop("disabled", true);
 		$("#updateFormUpdateBtn").prop("disabled", true);
 		$('#updateFormSpinner').show();
 
 		let fotoUpdateId = $('span[id=updateId]').html();
 
-        let formData = new FormData();
-        formData.append('name', $('input[id=updateFormName]').val());
-        formData.append('description', $('textarea[id=updateFormDescr]').val());
+        // Create a regular JS object
+        let updateData = {
+            name: $("#updateFormName").val(),
+            description: $("#updateFormDescr").val()
+        };
+        // Just for debug
+        console.log(JSON.stringify(updateData));
 
         $.ajax({
             type: 'PUT',
@@ -29,7 +32,7 @@ $(function() {
 			dataType: 'json',
             contentType: "application/json",
 			processData: false,
-            data: formData
+            data: JSON.stringify(updateData)
         })
         .done(function(response) {
             if (response.success == false) {
@@ -39,20 +42,13 @@ $(function() {
             }
             $('#updateFormSpinner').hide();
             $('#updateFormResponse').html(output);
-            $("#updateFormCancelBtn").prop("disabled", false);
             $("#updateFormUpdateBtn").prop("disabled", false);
         })
         .fail(function(e) {
             $('#updateFormSpinner').hide();
             $("#updateFormResponse").html(e.responseText);
-            $("#updateFormCancelBtn").prop("disabled", false);
             $("#updateFormUpdateBtn").prop("disabled", false);
         });
-    });
-
-    $('#updateFormCancelBtn').click(function(e) {
-            $('#updateForm')[0].reset();
-            $('#updateFormResponse').html('');
     });
 
     $('#updateModalCloseBtn').click(function(e) {
