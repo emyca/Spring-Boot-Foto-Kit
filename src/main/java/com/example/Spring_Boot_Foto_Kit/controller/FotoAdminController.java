@@ -1,13 +1,19 @@
 package com.example.Spring_Boot_Foto_Kit.controller;
 
 import com.example.Spring_Boot_Foto_Kit.data.FotoMessage;
+import com.example.Spring_Boot_Foto_Kit.data.FotoRequest;
+import com.example.Spring_Boot_Foto_Kit.data.FotoResponse;
 import com.example.Spring_Boot_Foto_Kit.entity.Foto;
 import com.example.Spring_Boot_Foto_Kit.service.admin.FotoAdminService;
 import com.example.Spring_Boot_Foto_Kit.utils.URLS;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -32,6 +38,17 @@ public class FotoAdminController {
         }
         model.addAttribute("fragmentName", "content");
         return "admin/@layout";
+    }
+
+    @PostMapping(path = "/fotos",
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<FotoResponse> add(
+            @ModelAttribute FotoRequest request,
+            @RequestParam("file") MultipartFile file) {
+        request.setFile(file);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(service.add(request));
     }
 
 }
