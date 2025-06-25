@@ -20,8 +20,8 @@ $(function() {
 		let fotoUpdateId = $('span[id=updateId]').html();
 
         let formData = new FormData();
-        formData.append('fotoName', $('input[id=updateFormName]').val());
-        formData.append('fotoDescr', $('textarea[id=updateFormDescr]').val());
+        formData.append('name', $('input[id=updateFormName]').val());
+        formData.append('description', $('textarea[id=updateFormDescr]').val());
 
         $.ajax({
             type: 'PUT',
