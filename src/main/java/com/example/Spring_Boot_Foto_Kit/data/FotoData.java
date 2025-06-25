@@ -26,6 +26,11 @@ public class FotoData {
         this.description = (request.getDescription() != null) ? request.getDescription() : null;
     }
 
+    /**
+     * Transforms request data to entity .
+     *
+     * @return New item object to save into DB
+     */
     public Foto requestToEntity() {
         Foto foto = new Foto();
         foto.setImg(this.getFile().getOriginalFilename());
@@ -34,6 +39,33 @@ public class FotoData {
         return foto;
     }
 
+    /**
+     * Updates item data got from DB.
+     *
+     * @param id Item primary key in DB
+     * @param request Request body
+     * @param foto Item object got from DB
+     *
+     * @return Updated item object to save into DB
+     */
+    public Foto updateRequestToEntity(
+            Long id,
+            FotoRequest request,
+            Foto foto
+    ) {
+        foto.setId(id);
+        foto.setImg(foto.getImg());
+        foto.setName(request.getName());
+        foto.setDescription(request.getDescription());
+        return foto;
+    }
+
+    /**
+     * Transforms Iterable item collection
+     * to List item collection.
+     *
+     * @return List item collection
+     */
     public List<Foto> toList(Iterable<Foto> iterable) {
         List<Foto> list =
                 StreamSupport
