@@ -20,10 +20,10 @@ public class FotoData {
     private String description;
 
     public FotoData(FotoRequest request) {
-        this.id = (request.id() != null) ? request.id() : null;
-        this.file = (request.file() != null) ? request.file() : null;
-        this.name = (request.name() != null) ? request.name() : null;
-        this.description = (request.description() != null) ? request.description() : null;
+        this.id = (request.getId() != null) ? request.getId() : null;
+        this.file = (request.getFile() != null) ? request.getFile() : null;
+        this.name = (request.getName() != null) ? request.getName() : null;
+        this.description = (request.getDescription() != null) ? request.getDescription() : null;
     }
 
     public Foto requestToEntity() {
