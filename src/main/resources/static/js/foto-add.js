@@ -7,16 +7,16 @@ $(function() {
 		$('#addFormSpinner').show();
 
         let formData = new FormData();
-		formData.append('fotoName', $('input[id=addFormName]').val());
-		formData.append('fotoDescr', $('textarea[id=addFormDescr]').val());
-		formData.append('fotoFile', $('input[id=addFormFile]')[0].files[0]);
+		formData.append('name', $('input[id=addFormName]').val());
+		formData.append('description', $('textarea[id=addFormDescr]').val());
+		formData.append('file', $('input[id=addFormFile]')[0].files[0]);
 
         $.ajax({
             type: 'POST',
             enctype: 'multipart/form-data',
 			url: './fotos',
 			dataType: 'json',
-            contentType: "application/json",
+            contentType: false,
             processData: false,
 			data: formData
         })
