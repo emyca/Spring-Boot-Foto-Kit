@@ -32,19 +32,17 @@ $(function() {
             }
             $('#deleteSpinner').hide();
             $('#deleteResponse').html(output);
-            $("#deleteCancelBtn").prop("disabled", false);
             $("#deleteDeleteBtn").prop("disabled", false);
         })
         .fail(function(e) {
             $('#deleteSpinner').hide();
             $("#deleteResponse").html(e.responseText);
-            $("#deleteCancelBtn").prop("disabled", false);
             $("#deleteDeleteBtn").prop("disabled", false);
         });
 
     });
 
-    $('#deleteCancelBtn').click(function(e) {
+    $('#deleteModalCloseBtn').click(function(e) {
             $('#deleteId').html('');
             $('#deleteName').html('');
             $('#deleteResponse').html('');
