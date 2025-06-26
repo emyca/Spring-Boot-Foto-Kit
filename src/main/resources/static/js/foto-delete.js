@@ -21,7 +21,7 @@ $(function() {
             type: 'DELETE',
             url: './fotos/' + fotoDeleteId,
             dataType: 'json',
-            contentType: "application/json",
+            contentType: false,
 			processData: false
         })
         .done(function(response) {
