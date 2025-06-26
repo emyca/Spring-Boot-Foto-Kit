@@ -32,7 +32,7 @@ public class FotoAdminController {
             model.addAttribute("fotoInfo",
                     FotoMessage.FAILURE_GET_LIST_MSG.getMessage());
         } else {
-            model.addAttribute("uploads",
+            model.addAttribute("uploads", "../" +
                     URLS.UPLOADS_URL.getUrl());
             model.addAttribute("fotos", list);
         }
