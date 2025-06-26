@@ -154,7 +154,39 @@ public class FotoAdminServiceImpl implements FotoAdminService {
     }
 
     @Override
+    @Transactional
     public FotoResponse delete(Long id) {
-        return null;
+        Optional<Foto> optional = repository.findById(id);
+        if (optional.isPresent()) {
+            // Gets item file name
+            String fileName = optional.get().getImg();
+            // Gets file path
+            Path path = Paths.get(
+                    URLS.TO_UPLOADS_URL.getUrl()
+                            + fileName);
+            try {
+                // Deletes the file
+                Files.delete(path);
+            } catch (IOException e) {
+                return new FotoResponse(
+                        HttpStatus.NOT_FOUND.value(),
+                        HttpStatus.NOT_FOUND.getReasonPhrase(),
+                        false,
+                        "No file found!");
+            }
+
+            // Deletes item from DB
+            repository.deleteById(id);
+            return new FotoResponse(
+                    HttpStatus.OK.value(),
+                    HttpStatus.OK.getReasonPhrase(),
+                    true,
+                    FotoMessage.SUCCESS_DELETE_MSG.getMessage());
+        } else
+            return new FotoResponse(
+                    HttpStatus.NOT_FOUND.value(),
+                    HttpStatus.NOT_FOUND.getReasonPhrase(),
+                    false,
+                    FotoMessage.FAILURE_GET_ITEM_MSG.getMessage());
     }
 }

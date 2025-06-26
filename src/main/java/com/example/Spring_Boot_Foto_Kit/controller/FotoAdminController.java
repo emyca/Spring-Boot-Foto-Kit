@@ -61,4 +61,12 @@ public class FotoAdminController {
                 .body(service.update(id, request));
     }
 
+    @DeleteMapping(path = "/fotos/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<FotoResponse> delete(
+            @PathVariable("id") Long id) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(service.delete(id));
+    }
+
 }
