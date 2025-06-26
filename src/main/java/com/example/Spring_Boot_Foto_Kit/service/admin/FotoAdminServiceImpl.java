@@ -79,7 +79,7 @@ public class FotoAdminServiceImpl implements FotoAdminService {
             byte[] bytes = data.getFile().getBytes();
             // Gets uploads path
             Path path = Paths.get(
-                    URLS.TO_UPLOADS_URL.getUrl()
+                    URLS.UPLOADS_URL.getUrl()
                             + uploadedImgWithPrefix);
             // Writes image file to uploads folder
             Files.write(path, bytes);
@@ -162,7 +162,7 @@ public class FotoAdminServiceImpl implements FotoAdminService {
             String fileName = optional.get().getImg();
             // Gets file path
             Path path = Paths.get(
-                    URLS.TO_UPLOADS_URL.getUrl()
+                    URLS.UPLOADS_URL.getUrl()
                             + fileName);
             try {
                 // Deletes the file

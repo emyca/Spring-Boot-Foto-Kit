@@ -25,7 +25,7 @@ public class FotoController {
             model.addAttribute("fotoInfo",
                     FotoMessage.FAILURE_GET_LIST_MSG.getMessage());
         } else {
-            model.addAttribute("uploads", URLS.GET_UPLOADS_URL.getUrl());
+            model.addAttribute("uploads", URLS.UPLOADS_URL.getUrl());
             model.addAttribute("fotos", list);
         }
         model.addAttribute("fragmentName", "foto-content");
