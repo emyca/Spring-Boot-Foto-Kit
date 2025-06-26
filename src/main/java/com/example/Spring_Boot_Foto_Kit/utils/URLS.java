@@ -5,8 +5,7 @@ import lombok.Getter;
 @Getter
 public enum URLS {
 
-    GET_UPLOADS_URL("../uploads/"),
-    TO_UPLOADS_URL("uploads/");
+    UPLOADS_URL("uploads/");
 
     private final String url;
 
