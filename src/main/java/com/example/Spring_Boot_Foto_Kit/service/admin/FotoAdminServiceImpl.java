@@ -78,11 +78,12 @@ public class FotoAdminServiceImpl implements FotoAdminService {
             // Gets image file bytes
             byte[] bytes = data.getFile().getBytes();
             // Gets uploads path
-            Path path = Paths.get(
+            Path relativePath = Paths.get(
                     URLS.UPLOADS_URL.getUrl()
                             + uploadedImgWithPrefix);
+            Path absolutePath = relativePath.toAbsolutePath();
             // Writes image file to uploads folder
-            Files.write(path, bytes);
+            Files.write(absolutePath, bytes);
             // Sets image file name with random prefix
             // to item entity object
             foto.setImg(uploadedImgWithPrefix);
