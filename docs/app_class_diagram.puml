@@ -1,0 +1,130 @@
+@startuml
+class com.example.Spring_Boot_Foto_Kit.FotoKitApplication {
++ {static} void main(String[])
+# SpringApplicationBuilder configure(SpringApplicationBuilder)
+}
+
+class com.example.Spring_Boot_Foto_Kit.config.ExtraResourceWebConfiguration {
++ void addResourceHandlers(ResourceHandlerRegistry)
+}
+
+class com.example.Spring_Boot_Foto_Kit.controller.FotoController {
+~ FotoService service
++ String getAll(Model)
+}
+
+
+class com.example.Spring_Boot_Foto_Kit.entity.Foto {
+~ Long id
+~ String img
+~ String name
+~ String description
+}
+
+class com.example.Spring_Boot_Foto_Kit.service.admin.FotoValidator {
++ void validateImage(FotoData)
++ void validateName(FotoData)
++ void validateDescription(FotoData)
+}
+
+class com.example.Spring_Boot_Foto_Kit.data.FotoData {
+- Long id
+- MultipartFile file
+- String name
+- String description
++ Foto requestToEntity()
++ Foto updateRequestToEntity(Long,FotoRequest,Foto)
++ List<Foto> toList(Iterable<Foto>)
+}
+
+
+enum com.example.Spring_Boot_Foto_Kit.data.FotoMessage {
++  ADD_FILE_MSG
++  ADD_NAME_MSG
++  ADD_DESCRIPTION_MSG
++  SUCCESS_CREATE_MSG
++  FAILURE_CREATE_MSG
++  FAILURE_GET_ITEM_MSG
++  FAILURE_GET_LIST_MSG
++  SUCCESS_UPDATE_MSG
++  SUCCESS_DELETE_MSG
+- String message
+}
+
+class com.example.Spring_Boot_Foto_Kit.data.FotoResponse {
+- int status
+- String reasonPhrase
+- boolean success
+- String message
++ boolean success()
++ int status()
++ String message()
++ String reasonPhrase()
+}
+
+
+interface com.example.Spring_Boot_Foto_Kit.service.user.FotoService {
+~ List<Foto> getAll()
+}
+
+class com.example.Spring_Boot_Foto_Kit.utils.StringGenerator {
++ {static} String genStr()
+}
+
+class com.example.Spring_Boot_Foto_Kit.exceptions.FotoException {
+}
+class com.example.Spring_Boot_Foto_Kit.service.admin.FotoAdminServiceImpl {
+~ FotoValidator validator
+~ FotoRepository repository
++ List<Foto> getAll()
++ FotoResponse add(FotoRequest)
++ FotoResponse update(Long,FotoRequest)
++ FotoResponse delete(Long)
+}
+
+
+enum com.example.Spring_Boot_Foto_Kit.utils.URLS {
++  UPLOADS_URL
+- String url
+}
+
+interface com.example.Spring_Boot_Foto_Kit.service.admin.FotoAdminService {
+~ List<Foto> getAll()
+~ FotoResponse add(FotoRequest)
+~ FotoResponse update(Long,FotoRequest)
+~ FotoResponse delete(Long)
+}
+
+class com.example.Spring_Boot_Foto_Kit.data.FotoRequest {
+~ Long id
+~ MultipartFile file
+~ String name
+~ String description
+}
+
+interface com.example.Spring_Boot_Foto_Kit.repository.FotoRepository {
+}
+class com.example.Spring_Boot_Foto_Kit.service.user.FotoServiceImpl {
+~ FotoRepository repository
++ List<Foto> getAll()
+}
+
+
+class com.example.Spring_Boot_Foto_Kit.controller.FotoAdminController {
+~ FotoAdminService service
++ String getAll(Model)
++ ResponseEntity<FotoResponse> add(FotoRequest,MultipartFile)
++ ResponseEntity<FotoResponse> update(Long,FotoRequest)
++ ResponseEntity<FotoResponse> delete(Long)
+}
+
+
+
+
+org.springframework.boot.web.servlet.support.SpringBootServletInitializer <|-- com.example.Spring_Boot_Foto_Kit.FotoKitApplication
+org.springframework.web.servlet.config.annotation.WebMvcConfigurer <|.. com.example.Spring_Boot_Foto_Kit.config.ExtraResourceWebConfiguration
+com.example.Spring_Boot_Foto_Kit.exceptions.RuntimeException <|-- com.example.Spring_Boot_Foto_Kit.exceptions.FotoException
+com.example.Spring_Boot_Foto_Kit.service.admin.FotoAdminService <|.. com.example.Spring_Boot_Foto_Kit.service.admin.FotoAdminServiceImpl
+org.springframework.data.repository.CrudRepository <|-- com.example.Spring_Boot_Foto_Kit.repository.FotoRepository
+com.example.Spring_Boot_Foto_Kit.service.user.FotoService <|.. com.example.Spring_Boot_Foto_Kit.service.user.FotoServiceImpl
+@enduml
