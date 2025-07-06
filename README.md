@@ -130,7 +130,7 @@ This file should be unzipped automatically by Tomcat.
 
 Database server and Tomcat server must running.
 
-This demo app has two type of users, namely - user, and admin.
+This demo app has two types of users, namely - user, and admin.
 
 Assuming, Tomcat running on port 8080. For user type, in web browser, start 
 ```text
