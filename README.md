@@ -1,9 +1,10 @@
 
 # Foto Kit
 
-This is only Spring Boot demo app. It demonstrates data manipulation, CRUD operations, 
-file uploading to external server.
-The app is assumed to be run on a standalone Apache Tomcat (Tomcat) server.
+This is Spring Boot demo app. It demonstrates data manipulation, CRUD operations, 
+file uploading to external server. The app is assumed to be run on a standalone 
+Apache Tomcat (Tomcat) server. This demo app is only for demonstration
+and/or educational purposes.
 
 
 ### Techstack
