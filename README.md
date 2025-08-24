@@ -16,6 +16,7 @@ and/or educational purposes.
 * [Resources](#manual-testing)
 
 ### Tech Stack
+<hr>
 
 * [Spring Framework.](https://spring.io/)
 * [Spring Web MVC.](https://docs.spring.io/spring-framework/reference/web/webmvc.html)
@@ -28,6 +29,7 @@ and/or educational purposes.
 
 
 ### Database
+<hr>
 
 This demo app uses MySQL RDBMS. SQL-query for DB table
 
@@ -45,6 +47,7 @@ in order to manually test the app.
 
 
 ### Configuration
+<hr>
 
 Start [Spring Initializr.](https://start.spring.io/) 
 Configure the project (the numeric designations of the framework versions may
@@ -110,7 +113,9 @@ file**. In this remote Git repository it is `application.example.properties` fil
 and `application.properties` file is ignored by Git by mentioning it in 
 `.gitignore` file.
 
+
 ### Deployment
+<hr>
 
 To remove unnecessary generated build code (if it exists), run
 
@@ -136,6 +141,7 @@ This file should be unzipped automatically by Tomcat.
 
 
 ### Manual testing
+<hr>
 
 Database server and Tomcat server must running.
 
@@ -153,6 +159,7 @@ After that, you can manually test the app functionality.
 
 
 ### Resources
+<hr>
 
 * https://spring.io/guides/gs/uploading-files
 * https://www.baeldung.com/sprint-boot-multipart-requests
