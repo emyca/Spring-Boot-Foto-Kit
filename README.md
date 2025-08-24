@@ -6,8 +6,7 @@ file uploading to external server. The app is assumed to be run on a standalone
 Apache Tomcat (Tomcat) server. This demo app is only for demonstration
 and/or educational purposes.
 
-
-### Techstack
+### Tech Stack
 
 * [Spring Framework.](https://spring.io/)
 * [Spring Web MVC.](https://docs.spring.io/spring-framework/reference/web/webmvc.html)
