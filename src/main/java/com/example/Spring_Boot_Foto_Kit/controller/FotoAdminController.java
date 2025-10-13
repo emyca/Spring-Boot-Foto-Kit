@@ -24,6 +24,12 @@ public class FotoAdminController {
     @Autowired
     FotoAdminService service;
 
+    /**
+     * Returns view fragment with data handled
+     *
+     * @param model supply attributes used for rendering views
+     * @return      view fragment
+     * */
     @GetMapping("/fotos")
     public String getAll(Model model) {
         List<Foto> list = service.getAll();
@@ -40,6 +46,13 @@ public class FotoAdminController {
         return "admin/@layout";
     }
 
+    /**
+     * Uploads an image and it's data to server
+     *
+     * @param request image data
+     * @param file    image file
+     * @return        spring response entity of Foto response type
+     * */
     @PostMapping(path = "/fotos",
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -51,6 +64,13 @@ public class FotoAdminController {
                 .body(service.add(request));
     }
 
+    /**
+     * Updates image data by id
+     *
+     * @param id      image id
+     * @param request image data
+     * @return        spring response entity of Foto response type
+     * */
     @PutMapping(path = "/fotos/{id}",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -61,6 +81,12 @@ public class FotoAdminController {
                 .body(service.update(id, request));
     }
 
+    /**
+     * Deletes image and it's data by id
+     *
+     * @param id image id
+     * @return   spring response entity of Foto response type
+     * */
     @DeleteMapping(path = "/fotos/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<FotoResponse> delete(

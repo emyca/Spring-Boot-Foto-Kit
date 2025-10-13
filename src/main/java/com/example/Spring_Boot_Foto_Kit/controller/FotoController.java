@@ -17,6 +17,12 @@ public class FotoController {
     @Autowired
     FotoService service;
 
+    /**
+     * Returns view fragment with data handled
+     *
+     * @param model supply attributes used for rendering views
+     * @return      view fragment
+     * */
     @GetMapping("/")
     public String getAll(Model model) {
         List<Foto> list = service.getAll();
