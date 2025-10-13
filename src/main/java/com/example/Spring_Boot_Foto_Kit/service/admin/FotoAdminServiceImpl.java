@@ -29,6 +29,11 @@ public class FotoAdminServiceImpl implements FotoAdminService {
     @Autowired
     FotoRepository repository;
 
+    /**
+     * Gets full or empty Foto list container
+     *
+     * @return  Foto list
+     * */
     @Override
     @Transactional
     public List<Foto> getAll() {
@@ -36,6 +41,14 @@ public class FotoAdminServiceImpl implements FotoAdminService {
                 .toList(repository.findAll());
     }
 
+    /**
+     * Adds an image and it's data to server.
+     * Calls validator to validate image data.
+     * Puts image file to uploads directory on server.
+     *
+     * @param request image file and data
+     * @return        Foto response object
+     * */
     @Override
     @Transactional
     public FotoResponse add(FotoRequest request) {
@@ -106,6 +119,14 @@ public class FotoAdminServiceImpl implements FotoAdminService {
         }
     }
 
+    /**
+     * Updates image data by id.
+     * Calls validator to validate image data.
+     *
+     * @param id      image id
+     * @param request image data
+     * @return        Foto response object
+     * */
     @Override
     @Transactional
     public FotoResponse update(Long id, FotoRequest request) {
@@ -154,6 +175,12 @@ public class FotoAdminServiceImpl implements FotoAdminService {
                     FotoMessage.FAILURE_GET_ITEM_MSG.getMessage());
     }
 
+    /**
+     * Deletes image and it's data by id.
+     *
+     * @param id image id
+     * @return   Foto response object
+     * */
     @Override
     @Transactional
     public FotoResponse delete(Long id) {
