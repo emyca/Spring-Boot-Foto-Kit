@@ -1,9 +1,15 @@
 $(function() {
 
-    $('#addFormSaveBtn').click(function(e) {
+    const addForm = $('#addForm');
+    const addModalCloseBtn = $('#addModalCloseBtn');
+    const addFormSaveBtn = $('#addFormSaveBtn');
+    const addFormSpinner = $('#addFormSpinner');
+    const addFormResponse = $('#addFormResponse');
+
+    addFormSaveBtn.click(function(e) {
 		e.preventDefault();
-		$("#addFormSaveBtn").prop("disabled", true);
-		$('#addFormSpinner').show();
+        addFormSaveBtn.prop("disabled", true);
+        addFormSpinner.show();
 
         let formData = new FormData();
 		formData.append('name', $('input[id=addFormName]').val());
@@ -21,25 +27,28 @@ $(function() {
         })
         .done(function(response) {
             if(response.success == false) {
-                output = "<span style='color: #f02d1f; font-size: 16px;'>" + response.message + "</span>";
+                addFormResponse
+                    .css({"color": "#f02d1f", "font-size": "16px"})
+                    .html(response.message);
             } else {
-                output = "<span style='color: #22a131; font-size: 16px;'>" + response.message + "</span>";
+                addFormResponse
+                    .css({"color": "#22a131", "font-size": "16px"})
+                    .html(response.message);
             }
-            $('#addFormSpinner').hide();
-            $('#addFormResponse').html(output);
-            $("#addFormSaveBtn").prop("disabled", false);
+            addFormSpinner.hide();
+            addFormResponse.html(output);
+            addFormSaveBtn.prop("disabled", false);
         })
         .fail (function(e) {
-            $('#addFormSpinner').hide();
-            $("#addFormResponse").html(e.responseText);
-            $("#addFormSaveBtn").prop("disabled", false);
+            addFormSpinner.hide();
+            addFormResponse.html(e.responseText);
+            addFormSaveBtn.prop("disabled", false);
         });
     });
 
-    $('#addModalCloseBtn').click(function(e) {
-        $('#addForm')[0].reset();
-        $('#addFormResponse').html('');
+    addModalCloseBtn.click(function(e) {
+        addForm[0].reset();
+        addFormResponse.html('');
         location.reload();
     });
-
 });
