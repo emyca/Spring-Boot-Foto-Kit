@@ -51,7 +51,7 @@ Configure the project (the numeric designations of the framework versions may
 change as the framework develops).
 
 In **Project** choose `Maven`. In **Language** choose `Java`. 
-In **Spring Boot** choose latest stable Spring Boot version.
+In **Spring Boot** choose stable Spring Boot version.
 
 **Project Metadata**:
 - `Group`: com.example
@@ -60,7 +60,7 @@ In **Spring Boot** choose latest stable Spring Boot version.
 - `Description`: Demo project for Spring Boot
 - `Packaging name`: com.example.Spring-Boot-Foto-Kit
 - `Packaging`: War
-- `Java`: 21 (i.o. choose latest LTS version)
+- `Java`: 21
 
 **Dependencies** (choose necessary dependencies):
 - Spring Boot DevTools
@@ -106,7 +106,8 @@ external server), it's better make static `uploads` directory
 in Tomcat `./bin` folder.
 
 For proper application configuration **also modify `application.properties` 
-file**. In this remote Git repository it is `application.example.properties` file, 
+file**. In this remote Git repository it is `application.example.properties` file 
+(can be found [here](src/main/resources/application.example.properties)), 
 and `application.properties` file is ignored by Git by mentioning it in 
 `.gitignore` file.
 
