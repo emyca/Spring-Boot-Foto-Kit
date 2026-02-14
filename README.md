@@ -32,12 +32,12 @@ and/or educational purposes.
 This demo app uses MySQL RDBMS. SQL-query for DB table
 
 ```sql
-CREATE TABLE IF NOT EXISTS fotos
-( id BIGINT NOT NULL AUTO_INCREMENT,
-  img VARCHAR(255) NOT NULL,
-  name VARCHAR(255) NOT NULL,
-  description VARCHAR(255) NOT NULL,
-  PRIMARY KEY (id)
+CREATE TABLE IF NOT EXISTS fotos (
+    PRIMARY KEY (id),
+    id          BIGINT       NOT NULL AUTO_INCREMENT,
+    img         VARCHAR(255) NOT NULL,
+    name        VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL
 );
 ```
 Database server should run together with standalone Tomcat server, 
