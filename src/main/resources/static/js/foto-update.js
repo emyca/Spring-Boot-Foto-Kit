@@ -1,5 +1,11 @@
 $(function() {
 
+    const updateForm = $('#updateForm');
+    const updateModalCloseBtn = $('#updateModalCloseBtn');
+    const updateFormUpdateBtn = $('#updateFormUpdateBtn');
+    const updateFormSpinner = $('#updateFormSpinner');
+    const updateFormResponse = $('#updateFormResponse');
+
     $('button[name="btnUpdate"]').click(function(e) {
         e.preventDefault();
         let parentEl = $(this).closest('.card');
@@ -11,10 +17,10 @@ $(function() {
         $('#updateFormDescr').val(fotoDescription);
     });
 
-    $('#updateFormUpdateBtn').click(function(e) {
+    updateFormUpdateBtn.click(function(e) {
         e.preventDefault();
-		$("#updateFormUpdateBtn").prop("disabled", true);
-		$('#updateFormSpinner').show();
+        updateFormUpdateBtn.prop("disabled", true);
+        updateFormSpinner.show();
 
 		let fotoUpdateId = $('span[id=updateId]').html();
 
@@ -35,26 +41,29 @@ $(function() {
             data: JSON.stringify(updateData)
         })
         .done(function(response) {
-            if (response.success == false) {
-                output = "<span style='color: #f02d1f; font-size: 16px;'>" + response.message + "</span>";
+            if(response.success == false) {
+                updateFormResponse
+                    .css({"color": "#f02d1f", "font-size": "16px"})
+                    .html(response.message);
             } else {
-                output = "<span style='color: #22a131; font-size: 16px;'>" + response.message + "</span>";
+                updateFormResponse
+                    .css({"color": "#22a131", "font-size": "16px"})
+                    .html(response.message);
             }
-            $('#updateFormSpinner').hide();
-            $('#updateFormResponse').html(output);
-            $("#updateFormUpdateBtn").prop("disabled", false);
+            updateFormSpinner.hide();
+            updateFormResponse.html(output);
+            updateFormUpdateBtn.prop("disabled", false);
         })
         .fail(function(e) {
-            $('#updateFormSpinner').hide();
-            $("#updateFormResponse").html(e.responseText);
-            $("#updateFormUpdateBtn").prop("disabled", false);
+            updateFormSpinner.hide();
+            updateFormResponse.html(e.responseText);
+            updateFormUpdateBtn.prop("disabled", false);
         });
     });
 
-    $('#updateModalCloseBtn').click(function(e) {
-        $('#updateForm')[0].reset();
-        $('#updateFormResponse').html('');
+    updateModalCloseBtn.click(function(e) {
+        updateForm[0].reset();
+        updateFormResponse.html('');
         location.reload();
     });
-
 });
