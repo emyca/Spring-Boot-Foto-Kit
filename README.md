@@ -60,6 +60,7 @@ In **Spring Boot** choose stable Spring Boot version.
 - `Description`: Demo project for Spring Boot
 - `Packaging name`: com.example.Spring-Boot-Foto-Kit
 - `Packaging`: War
+- `Configuration`: Properties
 - `Java`: 21
 
 **Dependencies** (choose necessary dependencies):
