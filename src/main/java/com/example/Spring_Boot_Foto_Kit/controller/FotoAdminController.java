@@ -6,7 +6,6 @@ import com.example.Spring_Boot_Foto_Kit.data.FotoResponse;
 import com.example.Spring_Boot_Foto_Kit.entity.Foto;
 import com.example.Spring_Boot_Foto_Kit.service.admin.FotoAdminService;
 import com.example.Spring_Boot_Foto_Kit.utils.URLS;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +20,11 @@ import java.util.List;
 @RequestMapping("/admin")
 public class FotoAdminController {
 
-    @Autowired
-    FotoAdminService service;
+    private  final FotoAdminService service;
+
+    public FotoAdminController(FotoAdminService service) {
+        this.service = service;
+    }
 
     /**
      * Returns view fragment with data handled

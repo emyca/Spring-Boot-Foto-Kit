@@ -9,7 +9,6 @@ import com.example.Spring_Boot_Foto_Kit.exceptions.FotoException;
 import com.example.Spring_Boot_Foto_Kit.repository.FotoRepository;
 import com.example.Spring_Boot_Foto_Kit.utils.StringGenerator;
 import com.example.Spring_Boot_Foto_Kit.utils.URLS;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,10 +23,13 @@ import java.util.Optional;
 @Service
 public class FotoAdminServiceImpl implements FotoAdminService {
 
-    @Autowired
-    FotoValidator validator;
-    @Autowired
-    FotoRepository repository;
+    private final FotoValidator validator;
+    private final FotoRepository repository;
+
+    public FotoAdminServiceImpl(FotoValidator validator, FotoRepository repository) {
+        this.validator = validator;
+        this.repository = repository;
+    }
 
     /**
      * Gets full or empty Foto list container
